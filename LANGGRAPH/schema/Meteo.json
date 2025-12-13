@@ -1,0 +1,175 @@
+{
+  "descricao_geral": "Grafo epidemiológico que integra casos de arboviroses (dengue, zika, chikungunya), notificações individuais do SINAN, atividades de controle vetorial (SISAWEB), informações meteorológicas diárias (NASA) e geometrias de municípios brasileiros. Todos os dados são ancorados em nós de Municipio e de Dia, permitindo análises espaciais e temporais combinadas.",
+  "no": {
+    "nome": "Meteo",
+    "label": "Meteo",
+    "descricao": "Conjunto de variáveis meteorológicas diárias (NASA POWER) para um município e data específicos.",
+    "chave_unica_composta": [
+      "municipio_id",
+      "date"
+    ],
+    "propriedades": {
+      "municipio_id": {
+        "tipo": "string",
+        "descricao": "Código IBGE do município ao qual a observação meteorológica se refere.",
+        "exemplo": "3500105"
+      },
+      "date": {
+        "tipo": "date",
+        "descricao": "Data da observação meteorológica.",
+        "exemplo": "2020-01-09"
+      },
+      "ALLSKY_SFC_LW_DWN": {
+        "tipo": "float",
+        "descricao": "Radiação de onda longa descendente em céu total na superfície (unidade conforme dataset NASA).",
+        "exemplo": 36.73
+      },
+      "ALLSKY_SFC_PAR_TOT": {
+        "tipo": "float",
+        "descricao": "Radiação fotossinteticamente ativa em céu total (PAR) na superfície.",
+        "exemplo": 9.71
+      },
+      "ALLSKY_SFC_SW_DWN": {
+        "tipo": "float",
+        "descricao": "Radiação de onda curta descendente em céu total na superfície.",
+        "exemplo": 20.3
+      },
+      "CLRSKY_SFC_SW_DWN": {
+        "tipo": "float",
+        "descricao": "Radiação de onda curta descendente em condição de céu claro.",
+        "exemplo": 28.37
+      },
+      "PRECIP": {
+        "tipo": "float",
+        "descricao": "Precipitação diária (mm/dia).",
+        "exemplo": 19.0
+      },
+      "PRECTOTCORR": {
+        "tipo": "float",
+        "descricao": "Precipitação total corrigida (mm/dia).",
+        "exemplo": 19.0
+      },
+      "T2M": {
+        "tipo": "float",
+        "descricao": "Temperatura média do ar a 2 metros (°C).",
+        "exemplo": 26.16
+      },
+      "T2M_MAX": {
+        "tipo": "float",
+        "descricao": "Temperatura máxima diária a 2 metros (°C).",
+        "exemplo": 29.62
+      },
+      "T2M_MIN": {
+        "tipo": "float",
+        "descricao": "Temperatura mínima diária a 2 metros (°C).",
+        "exemplo": 23.37
+      },
+      "T2M_RANGE": {
+        "tipo": "float",
+        "descricao": "Amplitude térmica diária (T2M_MAX - T2M_MIN).",
+        "exemplo": 6.25
+      },
+      "T2MDEW": {
+        "tipo": "float",
+        "descricao": "Temperatura do ponto de orvalho a 2 metros.",
+        "exemplo": 23.09
+      },
+      "T2MWET": {
+        "tipo": "float",
+        "descricao": "Temperatura de bulbo úmido a 2 metros.",
+        "exemplo": 24.62
+      },
+      "TS": {
+        "tipo": "float",
+        "descricao": "Temperatura da superfície do solo.",
+        "exemplo": 26.28
+      },
+      "RH2M": {
+        "tipo": "float",
+        "descricao": "Umidade relativa média a 2 metros (%).",
+        "exemplo": 84.07
+      },
+      "PS": {
+        "tipo": "float",
+        "descricao": "Pressão atmosférica ao nível da superfície (kPa ou hPa conforme dataset).",
+        "exemplo": 97.04
+      },
+      "PW": {
+        "tipo": "float",
+        "descricao": "Água precipitável na coluna atmosférica.",
+        "exemplo": 5.68
+      },
+      "QV2M": {
+        "tipo": "float",
+        "descricao": "Umidade específica a 2 metros.",
+        "exemplo": 18.3
+      },
+      "WD2M": {
+        "tipo": "float",
+        "descricao": "Direção média do vento a 2 metros (graus).",
+        "exemplo": 307.1
+      },
+      "WS2M": {
+        "tipo": "float",
+        "descricao": "Velocidade média do vento a 2 metros (m/s).",
+        "exemplo": 1.13
+      },
+      "WS2M_MAX": {
+        "tipo": "float",
+        "descricao": "Velocidade máxima do vento a 2 metros (m/s).",
+        "exemplo": 1.95
+      },
+      "WS2M_MIN": {
+        "tipo": "float",
+        "descricao": "Velocidade mínima do vento a 2 metros (m/s).",
+        "exemplo": 0.53
+      },
+      "WS2M_RANGE": {
+        "tipo": "float",
+        "descricao": "Amplitude da velocidade do vento (WS2M_MAX - WS2M_MIN).",
+        "exemplo": 1.42
+      },
+      "CDD0": {
+        "tipo": "float",
+        "descricao": "Cooling Degree Days base 0°C (indicador de calor acumulado).",
+        "exemplo": 26.49
+      },
+      "CDD10": {
+        "tipo": "float",
+        "descricao": "Cooling Degree Days base 10°C.",
+        "exemplo": 16.49
+      },
+      "HDD0": {
+        "tipo": "float",
+        "descricao": "Heating Degree Days base 0°C.",
+        "exemplo": 0.0
+      },
+      "HDD10": {
+        "tipo": "float",
+        "descricao": "Heating Degree Days base 10°C.",
+        "exemplo": 0.0
+      }
+    },
+    "constraints": [
+      "FOR (mm:Meteo) REQUIRE (mm.municipio_id, mm.date) IS UNIQUE"
+    ]
+  },
+  "relacoes": [
+    {
+      "tipo": "TEM_METEOROLOGIA",
+      "de": "Municipio",
+      "para": "Meteo",
+      "direcao": "Municipio -> Meteo",
+      "descricao": "Associa o município aos registros meteorológicos diários agregados (NASA) para aquele município.",
+      "cardinalidade": "Um Município pode ter muitos registros Meteo (um por dia); cada Meteo pertence a exatamente um Município."
+    },
+    {
+      "tipo": "TEM_METEOROLOGIA",
+      "de": "Dia",
+      "para": "Meteo",
+      "direcao": "Dia -> Meteo",
+      "descricao": "Liga o dia às variáveis meteorológicas daquele dia em cada município.",
+      "cardinalidade": "Um Dia pode ter registros Meteo para vários Municípios; cada Meteo está ligado a exatamente um Dia."
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "descricao_geral": "Grafo epidemiológico que integra casos de arboviroses (dengue, zika, chikungunya), notificações individuais do SINAN, atividades de controle vetorial (SISAWEB), informações meteorológicas diárias (NASA) e geometrias de municípios brasileiros. Todos os dados são ancorados em nós de Municipio e de Dia, permitindo análises espaciais e temporais combinadas.",
+  "no": {
+    "nome": "Casos",
+    "label": "Casos",
+    "descricao": "Resumo agregado diário de casos por município e agravo, derivado das notificações SINAN.",
+    "chave_unica_composta": [
+      "municipio_id",
+      "date",
+      "agravo"
+    ],
+    "propriedades": {
+      "municipio_id": {
+        "tipo": "string",
+        "descricao": "Código IBGE do município onde os casos ocorreram.",
+        "exemplo": "3500105"
+      },
+      "date": {
+        "tipo": "date",
+        "descricao": "Data de referência do resumo de casos (normalmente a data do dia na estrutura de 'datas').",
+        "exemplo": "2020-01-16"
+      },
+      "agravo": {
+        "tipo": "string",
+        "descricao": "Código textual do agravo (dengue, zika, chikungunya).",
+        "exemplo": "dengue"
+      },
+      "qtd": {
+        "tipo": "integer",
+        "descricao": "Quantidade total de notificações do agravo nesse município e dia.",
+        "exemplo": 10
+      },
+      "obitos": {
+        "tipo": "integer",
+        "descricao": "Quantidade de óbitos entre as notificações desse agravo no município e dia.",
+        "exemplo": 0
+      }
+    },
+    "constraints": [
+      "FOR (c:Casos) REQUIRE (c.municipio_id, c.date, c.agravo) IS UNIQUE"
+    ]
+  },
+  "relacoes": [
+    {
+      "tipo": "TEM_CASOS",
+      "de": "Municipio",
+      "para": "Casos",
+      "direcao": "Municipio -> Casos",
+      "descricao": "Associa o município ao resumo de casos de um agravo em um dia.",
+      "cardinalidade": "Um Município pode ter muitos Casos (um por agravo e dia)."
+    },
+    {
+      "tipo": "TEM_CASOS",
+      "de": "Dia",
+      "para": "Casos",
+      "direcao": "Dia -> Casos",
+      "descricao": "Associa o dia ao resumo de casos em cada município e agravo.",
+      "cardinalidade": "Um Dia pode ter muitos Casos, para vários municípios e agravos."
+    },
+    {
+      "tipo": "E_DO_AGRAVO",
+      "de": "Casos",
+      "para": "Agravo",
+      "direcao": "Casos -> Agravo",
+      "descricao": "Indica de qual agravo (dengue, zika, chikungunya) é o resumo de casos.",
+      "cardinalidade": "Muitos nós Casos podem apontar para o mesmo Agravo."
+    },
+    {
+      "tipo": "CONTA_PARA",
+      "de": "Notificacao",
+      "para": "Casos",
+      "direcao": "Notificacao -> Casos",
+      "descricao": "Liga cada notificação individual ao nó de Casos agregado correspondente (mesmo município, data e agravo).",
+      "cardinalidade": "Muitas Notificacao podem apontar para um único nó Casos."
+    }
+  ]
+}

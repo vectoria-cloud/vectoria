@@ -1,0 +1,72 @@
+{
+  "descricao_geral": "Grafo epidemiológico que integra casos de arboviroses (dengue, zika, chikungunya), notificações individuais do SINAN, atividades de controle vetorial (SISAWEB), informações meteorológicas diárias (NASA) e geometrias de municípios brasileiros. Todos os dados são ancorados em nós de Municipio e de Dia, permitindo análises espaciais e temporais combinadas.",
+  "no": {
+    "nome": "AtividadeResumo",
+    "label": "AtividadeResumo",
+    "descricao": "Resumo diário, por município e tipo de atividade, da quantidade de execuções AtividadeExec.",
+    "chave_unica_composta": [
+      "municipio_id",
+      "date",
+      "tipo"
+    ],
+    "propriedades": {
+      "municipio_id": {
+        "tipo": "string",
+        "descricao": "Código IBGE do município.",
+        "exemplo": "3500105"
+      },
+      "date": {
+        "tipo": "date",
+        "descricao": "Data do resumo.",
+        "exemplo": "2020-01-05"
+      },
+      "tipo": {
+        "tipo": "integer",
+        "descricao": "Código do tipo de atividade (1 a 16).",
+        "exemplo": 12
+      },
+      "qtd_execucoes": {
+        "tipo": "integer",
+        "descricao": "Número de nós AtividadeExec agregados neste resumo (para o mesmo município, data e tipo).",
+        "exemplo": 3
+      }
+    },
+    "constraints": [
+      "FOR (ar:AtividadeResumo) REQUIRE (ar.municipio_id, ar.date, ar.tipo) IS UNIQUE"
+    ]
+  },
+  "relacoes": [
+    {
+      "tipo": "TEM_ATIVIDADE_RESUMO",
+      "de": "Municipio",
+      "para": "AtividadeResumo",
+      "direcao": "Municipio -> AtividadeResumo",
+      "descricao": "Liga o município ao resumo diário de atividades por tipo.",
+      "cardinalidade": "Um Município pode ter muitos AtividadeResumo (um por tipo e dia)."
+    },
+    {
+      "tipo": "TEM_ATIVIDADE_RESUMO",
+      "de": "Dia",
+      "para": "AtividadeResumo",
+      "direcao": "Dia -> AtividadeResumo",
+      "descricao": "Liga o dia ao resumo diário de atividades por município e tipo.",
+      "cardinalidade": "Um Dia pode ter muitos resumos para diferentes municípios e tipos."
+    },
+    {
+      "tipo": "E_DO_TIPO",
+      "de": "AtividadeResumo",
+      "para": "TipoAtividade",
+      "direcao": "AtividadeResumo -> TipoAtividade",
+      "descricao": "Classifica o resumo de atividade pelo tipo (1 a 16).",
+      "cardinalidade": "Muitos AtividadeResumo podem apontar para o mesmo TipoAtividade."
+    },
+    {
+      "tipo": "CONTA_PARA",
+      "de": "AtividadeExec",
+      "para": "AtividadeResumo",
+      "direcao": "AtividadeExec -> AtividadeResumo",
+      "descricao": "Liga cada execução individual de atividade ao seu resumo agregado (mesmo município, data e tipo).",
+      "cardinalidade": "Muitas AtividadeExec podem apontar para um único AtividadeResumo."
+    }
+  ]
+}

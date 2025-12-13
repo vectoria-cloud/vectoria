@@ -1,0 +1,37 @@
+{
+  "descricao_geral": "Grafo epidemiológico que integra casos de arboviroses (dengue, zika, chikungunya), notificações individuais do SINAN, atividades de controle vetorial (SISAWEB), informações meteorológicas diárias (NASA) e geometrias de municípios brasileiros. Todos os dados são ancorados em nós de Municipio e de Dia, permitindo análises espaciais e temporais combinadas.",
+  "no": {
+    "nome": "TipoAtividade",
+    "label": "TipoAtividade",
+    "descricao": "Dimensão que representa o tipo de atividade de campo registrada no SISAWEB (1 a 16).",
+    "chave_unica": "codigo",
+    "propriedades": {
+      "codigo": {
+        "tipo": "integer",
+        "descricao": "Código numérico do tipo de atividade (1 a 16). O significado exato vem da tabela de tipos do SISAWEB.",
+        "exemplo": 6
+      }
+    },
+    "constraints": [
+      "FOR (t:TipoAtividade) REQUIRE t.codigo IS UNIQUE"
+    ]
+  },
+  "relacoes": [
+    {
+      "tipo": "E_DO_TIPO",
+      "de": "AtividadeExec",
+      "para": "TipoAtividade",
+      "direcao": "AtividadeExec -> TipoAtividade",
+      "descricao": "Classifica a execução de atividade pelo tipo (1 a 16) definido no SISAWEB.",
+      "cardinalidade": "Muitas AtividadeExec podem apontar para o mesmo TipoAtividade."
+    },
+    {
+      "tipo": "E_DO_TIPO",
+      "de": "AtividadeResumo",
+      "para": "TipoAtividade",
+      "direcao": "AtividadeResumo -> TipoAtividade",
+      "descricao": "Classifica o resumo de atividade pelo tipo (1 a 16).",
+      "cardinalidade": "Muitos AtividadeResumo podem apontar para o mesmo TipoAtividade."
+    }
+  ]
+}
