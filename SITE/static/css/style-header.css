@@ -1,0 +1,116 @@
+body{
+    height: 100vh;
+    width: 100%;
+}
+.content{
+    transition: 1s;
+    margin-left: 6%;
+    height: 95%;
+    width: 94%;
+    position: relative; 
+    top: 2%;
+}
+.content.recall{
+    transition: 1s;
+    width: 100%;
+    margin-left: 16%;
+}
+.pagina{
+    height: 100%;
+}
+.margem{
+    margin-left: -12px;
+}
+
+#logo{
+    transition: 1s;
+    width: 6rem;
+}
+.iten-menu{
+    margin-top: 30px;
+}
+.txt-logo{
+    width: 100px;
+    transition: 1s;
+    font-size: 25px;
+    font-weight: bold;
+    top: 8%; left:0%;
+    opacity: 0;
+    text-align: center;
+    position: absolute;
+}
+nav.menu-lateral{
+    transition: 1s;
+    background-color: #f0e68c;
+    width: 5%;
+    height: 100%;
+    padding-top: 40px;
+    box-shadow: 3px 0 0 black;
+    position: fixed;
+    top:0; left: 0;
+}
+.btn-menu{
+    transition: 1s;
+    width: 100%;
+    height: 60px;
+    text-align: left;
+    border-top:solid 1px;
+    border-bottom:solid 1px;
+}
+.txt-button{
+    transition: 1s;
+    opacity: 0;
+    margin-left: 20px;
+    margin-top: -25px;
+    font-size: 20px;
+    text-align: left;
+}
+.icon{
+    margin-left: 23px;
+    margin-top: 8px;
+}
+nav.menu-lateral.expandir{
+    transition: 1s;
+    width: 15%;
+}
+
+nav.menu-lateral.expandir .txt-logo{
+    left:50%;
+    opacity: 1;
+}
+
+nav.menu-lateral.expandir #logo{
+    transition: 1s;
+    width: 8rem;
+}
+
+nav.menu-lateral.expandir .txt-button{
+    transition: 1s;
+    opacity: 1;
+    margin-top: -25px;
+    margin-left: 80px;
+}
+.content.recall{
+    transition: 1s;
+    width: 83%;
+}
+
+#btn-expand{
+    width: 100%;
+    margin-top: 10px;
+    margin-left: -2px;
+}
+#btn-expand > i{
+    color: black;
+    font-size: 30px;
+    cursor: pointer;
+    padding-left: 30px;
+}
+.btn-menu{
+    background-color: #e8af49;
+    color: black;
+}
+
+
+
+

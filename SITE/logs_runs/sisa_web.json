@@ -1,0 +1,50 @@
+[
+  {
+    "emissor": "sisa_web",
+    "pergunta": "Quais foram os casos mensais de chikungunya em São José do Rio Preto em 2021?",
+    "run_id": "34497168e444",
+    "at": "2025-12-13T10:44:46.682040+00:00"
+  },
+  {
+    "emissor": "openai",
+    "resposta": "Não há registros no grafo para o agravo de chikungunya em São José do Rio Preto com os filtros informados.\n\nPara uma análise mais precisa, na próxima consulta informe um período (por exemplo, ano, mês ou intervalo de datas).",
+    "run_id": "34497168e444",
+    "at": "2025-12-13T10:45:44.068817+00:00"
+  },
+  {
+    "emissor": "sisa_web",
+    "pergunta": "Quais foram os casos mensais de chikungunya em São José do Rio Preto em 2021?",
+    "run_id": "36c868a7412d",
+    "at": "2025-12-13T10:48:38.417718+00:00"
+  },
+  {
+    "emissor": "openai",
+    "resposta": "Não há registros no grafo para o agravo de chikungunya em São José do Rio Preto com os filtros informados.\n\nComo não foi possível consultar os dados do grafo por erro, não é possível fornecer informações quantitativas sobre os casos mensais de chikungunya em São José do Rio Preto em 2021.",
+    "run_id": "36c868a7412d",
+    "at": "2025-12-13T10:49:40.439766+00:00"
+  },
+  {
+    "emissor": "sisa_web",
+    "pergunta": "Quais foram os casos mensais de chikungunya em São José do Rio Preto em 2021?",
+    "run_id": "06f31a05c09d",
+    "at": "2025-12-13T10:51:18.577617+00:00"
+  },
+  {
+    "emissor": "openai",
+    "resposta": "Não há registros no grafo para o agravo de chikungunya em São José do Rio Preto com os filtros informados.\n\nPara uma análise mais precisa, na próxima consulta informe um período (por exemplo, ano, mês ou intervalo de datas).",
+    "run_id": "06f31a05c09d",
+    "at": "2025-12-13T10:52:17.719704+00:00"
+  },
+  {
+    "emissor": "sisa_web",
+    "pergunta": "Quais foram os casos mensais de chikungunya em São José do Rio Preto em 2021?",
+    "run_id": "3a0fd8e93ba2",
+    "at": "2025-12-13T11:02:00.163356+00:00"
+  },
+  {
+    "emissor": "openai",
+    "resposta": "Não há registros no grafo para o agravo de chikungunya em São José do Rio Preto com os filtros informados.\n\nPara uma análise mais precisa, na próxima consulta informe um período (por exemplo, ano, mês ou intervalo de datas).",
+    "run_id": "3a0fd8e93ba2",
+    "at": "2025-12-13T11:02:55.322603+00:00"
+  }
+]

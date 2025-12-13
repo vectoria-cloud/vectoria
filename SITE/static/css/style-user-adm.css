@@ -1,0 +1,45 @@
+
+.historico {
+    background-color: white;
+    margin-top: 3rem;
+    margin-left: 1%;
+    margin-right: 1%;
+    height: 700px;
+    width: 98%;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 1%;
+}
+
+
+
+.cor {
+    background-color: #dfded8;
+}
+
+.pergunta {
+    background-color: #c1e6e2;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: left;
+}
+
+.resposta {
+    text-align: right;
+    background-color: #1a5f80;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: right;
+
+}
+
+.vazio {
+    margin-top: 17%;
+    text-align: center;
+    position: relative;
+}
