@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <title>A.T. Fatec</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="..\static\css\bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="..\static\css\style-header.css">
+  <link rel="stylesheet" type="text/css" href="..\static\css\style-user-adm.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+  <nav class="menu-lateral">
+    <div>
+      <div class="logo">
+        <img src="..\static\imagens\logo.png" id="logo">
+      </div>
+      <div class="txt-logo">
+        <p>VECTOR.I.A.</p>
+      </div>
+    </div>
+    <br>
+    <div id="btn-expand">
+      <i class="bi bi-list"></i>
+    </div>
+    <div class="menu">
+      <div class="iten-menu">
+        <form action="/agrotech">
+          <button id="btn-agrotech" name="btn-agrotech" type="submit" class="btn btn-success btn-menu">
+            <div>
+              <div class="icon">
+                <i class="bi bi-virus"></i>
+              </div>
+              <div class="txt-button">
+                <p>AGT</p>
+              </div>
+            </div>
+          </button>
+        </form>
+      </div>
+<div class="iten-menu">
+        <form action="/guia">
+            <button id="btn-files" name="btn-files" type="submit" class="btn btn-success btn-menu" >
+                <div>
+                    <div class="icon">
+                        <i class="bi bi-archive"></i>
+                    </div>
+                    <div class="txt-button">
+                        <p>Arquivos Guia</p>
+                    </div>
+                </div>
+            </button>
+        </form>
+    </div>
+      <div class="iten-menu">
+        <form action="/perfil">
+          <button id="btn-quit" name="btn-quit" type="submit" class="btn btn-success btn-menu">
+            <div>
+              <div class="icon">
+                <i class="bi bi-person-circle"></i>
+              </div>
+              <div class="txt-button">
+                {% if logado %}
+                <p>{{logado[2]}}</p>
+                {% endif%}
+              </div>
+            </div>
+          </button>
+        </form>
+      </div>
+  </nav>
+  <div class="content">
+    <div class="perfil">
+      {% if logado %}
+      <div class="nome_user">
+        <p>Nome: {{logado[2]}}</p>
+        <p>User: {{logado[3]}}</p>
+      </div>
+      {% endif %}
+      <div class="historico" id="historico">
+        {% if historico %}
+  {% for c in historico|reverse %}
+    {% set final = c.get('resposta_final') or (c.get('ias', {}).get('IA3_FINAL', {}).get('resposta')) or c.get('resposta') or '' %}
+    <div class="log-card">
+      <div class="log-head">
+        <div class="log-title">
+          <span class="log-ts">{{ c.get('ts','') }}</span>
+          <span class="log-user">Usuário: {{ c.get('user_key', logado[3]) }}</span>
+        </div>
+        <div class="log-actions">
+          <button type="button" class="btn btn-sm btn-outline-secondary" data-action="toggle-answer">
+            Ver resposta
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-primary" data-action="show-json"
+                  data-json='{{ c|tojson }}'>
+            Ver raciocínio
+          </button>
+        </div>
+      </div>
+
+      <div class="log-body">
+        <div class="log-q">
+          <div class="log-label">Pergunta</div>
+          <div class="log-text">{{ c.get('pergunta','') }}</div>
+        </div>
+
+        <div class="log-a" hidden>
+          <div class="log-label">Resposta final</div>
+          <pre class="answer-pre">{{ final }}</pre>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+  <div class="vazio">
+    <h1>Sem histórico ainda</h1>
+  </div>
+{% endif %}
+
+<!-- Modal (detalhes do JSON) -->
+<div class="modal-overlay" id="jsonModal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="jsonModalTitle">
+    <div class="modal-header">
+      <h2 id="jsonModalTitle">Detalhes do log</h2>
+      <button type="button" class="modal-close" id="modalClose" aria-label="Fechar">×</button>
+    </div>
+    <pre class="modal-pre" id="modalPre"></pre>
+  </div>
+</div>
+
+      </div>
+    </div>
+  </div>
+  <script src="..\static\javascript\js-header.js"></script>
+  <script src="..\static\javascript\js-user-adm.js"></script>
+</body>
+
+</html>

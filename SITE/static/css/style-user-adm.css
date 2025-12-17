@@ -1,0 +1,176 @@
+
+.historico {
+    background-color: var(--card-bg);
+    margin-top: 3rem;
+    margin-left: 1%;
+    margin-right: 1%;
+    height: 700px;
+    width: 98%;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 1%;
+}
+
+
+
+.cor {
+    background-color: var(--page-bg);
+}
+
+.pergunta {
+    background-color: var(--user-bg);
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: left;
+}
+
+.resposta {
+    text-align: right;
+    background-color: var(--bot-bg);
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: right;
+
+}
+
+.vazio {
+    margin-top: 17%;
+    text-align: center;
+    position: relative;
+}
+
+/* log-cards */
+.log-card{
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.log-head{
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    border-bottom: 1px solid #eef2f7;
+    background: #f8fafc;
+}
+
+.log-title{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.log-ts{
+    font-size: 12px;
+    color: #64748b;
+}
+
+.log-user{
+    font-size: 12px;
+    color: #0f172a;
+}
+
+.log-actions{
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.log-body{
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.log-label{
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.log-text{
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.answer-pre{
+    margin: 0;
+    padding: 10px;
+    border-radius: 10px;
+    background: #0b3a57;
+    color: #ffffff;
+    white-space: pre-wrap;
+    word-break: break-word;
+    border: 1px solid rgba(255,255,255,.12);
+}
+
+/* Modal simples */
+.modal-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    z-index: 9999;
+}
+
+.modal-card{
+    width: min(980px, 96vw);
+    max-height: 90vh;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,.35);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    background: #f1f5f9;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-header h2{
+    font-size: 16px;
+    margin: 0;
+}
+
+.modal-close{
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.modal-pre{
+    margin: 0;
+    padding: 14px;
+    overflow: auto;
+    font-size: 12px;
+    background: #0b1220;
+    color: #e2e8f0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
